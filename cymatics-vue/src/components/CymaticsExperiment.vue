@@ -7,7 +7,7 @@
         <template #header>
           <div class="card-header">
             <h2 class="title">控制台</h2>
-            <p class="subtitle">探究音频对物理图案的影响</p>
+            <p class="subtitle">cymatics</p>
           </div>
         </template>
         
@@ -43,7 +43,9 @@
         </div>
 
         <div class="progress-container" v-if="duration > 0">
-          <t-progress :percentage="progressPercent" :label="false" theme="plump" />
+          <div class="custom-progress-track">
+            <div class="custom-progress-thumb" :style="{ left: progressPercent + '%' }"></div>
+          </div>
           <div class="progress-label">{{ formatTime(currentTime) }} / {{ formatTime(duration) }}</div>
         </div>
       </t-card>
@@ -425,23 +427,39 @@ function animate() {
 }
 
 .progress-container {
-  margin-top: 15px;
+  margin-top: 20px;
+}
+
+.custom-progress-track {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  margin-bottom: 12px;
+}
+
+.custom-progress-thumb {
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle at 30% 30%, #f0f0f0, #ccc);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: left 0.1s linear;
 }
 
 .progress-label {
   font-size: 12px;
   color: #fff;
-  margin-top: 5px;
   text-align: right;
   font-family: 'Courier New', monospace;
-}
-
-:deep(.t-progress__inner) {
-  background-color: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(0, 255, 204, 0.5);
-}
-
-:deep(.t-progress__bar) {
-  background: linear-gradient(90deg, #ff0000 0%, #0000ff 100%) !important;
 }
 </style>
