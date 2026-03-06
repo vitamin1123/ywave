@@ -361,7 +361,7 @@ function animate() {
 .subtitle {
   margin: 5px 0 0 0;
   font-size: 12px;
-  color: #aaa;
+  color: #fff;
 }
 
 .control-group {
@@ -373,9 +373,22 @@ function animate() {
 }
 
 /* Customize TDesign overrides for dark theme feel */
-:deep(.t-input), :deep(.t-select__wrap), :deep(.t-select-input) {
+:deep(.t-input), :deep(.t-select__wrap), :deep(.t-select-input), :deep(.t-input__inner), :deep(.t-select-input__single) {
   background: #111 !important;
   border-color: #00ffcc !important;
+  color: #fff !important;
+}
+
+:deep(.t-select__list) {
+  background: #111 !important;
+}
+
+:deep(.t-select-option) {
+  color: #fff !important;
+}
+
+:deep(.t-select-option:hover), :deep(.t-select-option.t-is-selected) {
+  background: #333 !important;
   color: #00ffcc !important;
 }
 
@@ -404,7 +417,7 @@ function animate() {
 }
 
 .label {
-  color: #888;
+  color: #fff;
 }
 
 .value {
@@ -417,18 +430,18 @@ function animate() {
 
 .progress-label {
   font-size: 12px;
-  color: #888;
+  color: #fff;
   margin-top: 5px;
   text-align: right;
   font-family: 'Courier New', monospace;
 }
 
 :deep(.t-progress__inner) {
-  background-color: #111 !important;
-  border: 1px solid #00ffcc;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(0, 255, 204, 0.5);
 }
 
 :deep(.t-progress__bar) {
-  background-color: #00ffcc !important;
+  background: linear-gradient(90deg, #ff0000 0%, #0000ff 100%) !important;
 }
 </style>
